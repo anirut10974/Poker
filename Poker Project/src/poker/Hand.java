@@ -1,14 +1,16 @@
 package poker;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class Hand {
 
-    private final ArrayList<Card> cards;
-    private final ArrayList<Integer> ranksValue;
-    private final ArrayList<Integer> suitsValue;
+    private List<Card> cards;
+    private List<Integer> ranksValue;
+    private List<Integer> suitsValue;
 
     public Hand() {
         cards = new ArrayList<>();
@@ -22,31 +24,38 @@ public class Hand {
         suitsValue.add(card.getSuitValue());
     }
 
-    public ArrayList<Card> getCards() {
+    public List<Card> getCards() {
         return cards;
     }
 
-    public ArrayList<Integer> getRanksValue() {
+    public List<Integer> getRanksValue() {
         return ranksValue;
     }
 
-    public ArrayList<Integer> getSuitsValue() {
+    public List<Integer> getSuitsValue() {
         return suitsValue;
     }
-    
-    public void sortCard(){
+
+    public void sortCard() {
         cards.sort(Comparator.comparing(Card::getRankValue).reversed());
-        Collections.sort(ranksValue,Collections.reverseOrder());
+        Collections.sort(ranksValue, Collections.reverseOrder());
+
+        List<Integer> specialCase1 = Arrays.asList(14, 5, 4, 3, 2);
+        if (ranksValue.equals(specialCase1)) {
+            ranksValue = Arrays.asList(5, 4, 3, 2, 1);
+            cards.get(0).setRank("1");
+            sortCard();
+        }
     }
-    
+
     public String getRanksToString() {
         StringBuilder ar = new StringBuilder();
         cards.forEach((card) -> {
             ar.append(card.getRank()).append(" ");
-        });  
+        });
         return ar.toString();
     }
-    
+
     public String getRanksValueToString() {
         StringBuilder sum = new StringBuilder();
         ranksValue.forEach((rank) -> {

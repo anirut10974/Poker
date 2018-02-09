@@ -20,6 +20,7 @@ public class Player {
 
     public void setHand(Hand hand) {
         this.hand = hand;
+        this.hand.sortCard();
     }
 
     public String getScore() {
