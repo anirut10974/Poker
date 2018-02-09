@@ -43,7 +43,7 @@ public class Hand {
         List<Integer> specialCase1 = Arrays.asList(14, 5, 4, 3, 2);
         if (ranksValue.equals(specialCase1)) {
             ranksValue = Arrays.asList(5, 4, 3, 2, 1);
-            cards.get(0).setRank("1");
+            cards.get(0).setRank(Rank.ONE);
             sortCard();
         }
     }
@@ -51,7 +51,7 @@ public class Hand {
     public String getRanksToString() {
         StringBuilder ar = new StringBuilder();
         cards.forEach((card) -> {
-            ar.append(card.getRank()).append(" ");
+            ar.append(card.getRankAcronyms()).append(" ");
         });
         return ar.toString();
     }

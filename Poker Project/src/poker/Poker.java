@@ -101,31 +101,31 @@ public class Poker extends Utils {
 
         if (straightFlush(ranks, suits)) {
             player.setScore("8" + twoDigits(Collections.max(ranks)) + suits.get(0));
-            player.setDetail("Straight Flush ( MaxRank = " + cards.get(0).getRank() + " / Suit = " + cards.get(0).getSuit() + " )");
+            player.setDetail("Straight Flush ( MaxRank = " + cards.get(0).getRankAcronyms()+ " / Suit = " + cards.get(0).getSuitAcronyms() + " )");
         } else if (kind(4, ranks) > 0) {
             player.setScore("7" + twoDigits(kind(4, ranks)));
-            player.setDetail("Four of a kind with card " + cards.get(ranks.indexOf(kind(4, ranks))).getRank());
+            player.setDetail("Four of a kind with card " + cards.get(ranks.indexOf(kind(4, ranks))).getRankAcronyms());
         } else if (fullHouse(ranks)) {
             player.setScore("6" + twoDigits(kind(3, ranks)));
-            player.setDetail("Full House ( Kind3 = " + cards.get(ranks.indexOf(kind(3, ranks))).getRank() + " / Kind2 = " + cards.get(ranks.indexOf(kind(2, ranks))).getRank() + " )");
+            player.setDetail("Full House ( Kind3 = " + cards.get(ranks.indexOf(kind(3, ranks))).getRankAcronyms() + " / Kind2 = " + cards.get(ranks.indexOf(kind(2, ranks))).getRankAcronyms() + " )");
         } else if (flush(suits)) {
             player.setScore("5" + hand.getRanksValueToString());
             player.setDetail("Flush ( Kicker = " + hand.getRanksToString() + ")");
         } else if (straight(ranks)) {
             player.setScore("4" + twoDigits(Collections.max(ranks)));
-            player.setDetail("Straight ( MaxRank = " + cards.get(0).getRank() + " )");
+            player.setDetail("Straight ( MaxRank = " + cards.get(0).getRankAcronyms() + " )");
         } else if (kind(3, ranks) > 0) {
             player.setScore("3" + twoDigits(kind(3, ranks)));
             player.setDetail("Three of a kind with card " + kind(3, ranks));
         } else if (twoPair(ranks).size() > 0) {
             player.setScore("2" + twoDigits(Collections.max(twoPair(ranks))) + twoDigits(Collections.min(twoPair(ranks))) + twoDigits(kind(1, ranks)));
-            player.setDetail("Two pair ( HighPair " + cards.get(ranks.indexOf(Collections.max(twoPair(ranks)))).getRank()
-                    + " / LowPair " + cards.get(ranks.indexOf(Collections.min(twoPair(ranks)))).getRank()
-                    + " / Kicker " + cards.get(ranks.indexOf(kind(1, ranks))).getRank() + " )");
+            player.setDetail("Two pair ( HighPair " + cards.get(ranks.indexOf(Collections.max(twoPair(ranks)))).getRankAcronyms()
+                    + " / LowPair " + cards.get(ranks.indexOf(Collections.min(twoPair(ranks)))).getRankAcronyms()
+                    + " / Kicker " + cards.get(ranks.indexOf(kind(1, ranks))).getRankAcronyms() + " )");
             System.out.println(ranks.indexOf(kind(1, ranks)));
         } else if (kind(2, ranks) > 0) {
             player.setScore("1" + twoDigits(kind(2, ranks)) + hand.getRanksValueToString());
-            player.setDetail("One pair with card " + cards.get(ranks.indexOf(kind(2, ranks))).getRank() + " ( Kicker = " + hand.getRanksToString() + ")");
+            player.setDetail("One pair with card " + cards.get(ranks.indexOf(kind(2, ranks))).getRankAcronyms() + " ( Kicker = " + hand.getRanksToString() + ")");
         } else {
             player.setScore("0" + hand.getRanksValueToString());
             player.setDetail("High card ( Kicker = " + hand.getRanksToString() + ")");

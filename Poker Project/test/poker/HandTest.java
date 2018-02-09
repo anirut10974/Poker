@@ -33,7 +33,7 @@ public class HandTest {
         List<Card> expResult = Arrays.asList(new Card("A", "C"), new Card("2", "C"), new Card("3", "C"), new Card("4", "C"), new Card("5", "C"));
         List<Card> result = instance.getCards();
         for (int i = 0; i < result.size(); i++) {
-            assertEquals(expResult.get(i).getRank(), result.get(i).getRank());
+            assertEquals(expResult.get(i).getRankAcronyms(), result.get(i).getRankAcronyms());
         }
     }
 

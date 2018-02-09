@@ -1,35 +1,36 @@
 package poker;
 
 public class Card {
-    private String rank;
-    private String suit;
+    private Rank rank;
+    private Suit suit;
 
     public Card(String rank, String suit){
-        this.rank = rank;
-        this.suit = suit;
+        this.rank = Rank.getRankByStr(rank);
+        this.suit = Suit.getSuitByStr(suit);
     }
-    public String getRank() {
-        return rank;
+    
+    public void setRank(Rank r){
+        this.rank = r;
+    }
+    
+    public void setSuit(Suit s){
+        this.suit = s;
+    }
+    
+    public String getRankAcronyms() {
+        return rank.getAcronyms();
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
-    }
-
-    public String getSuit() {
-        return suit;
-    }
-
-    public void setSuit(String suit) {
-        this.suit = suit;
+    public String getSuitAcronyms() {
+        return suit.getAcronyms();
     }
     
     public int getRankValue(){
-        return "-123456789TJQKA".indexOf(rank);
+        return rank.getValue();
     }
     
     public int getSuitValue(){
-        return "-CDHS".indexOf(suit);
+        return suit.getValue();
     }
 }
 
